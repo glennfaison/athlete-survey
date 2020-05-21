@@ -10,5 +10,5 @@ angular.module('myApp.survey', ['ngRoute'])
   }])
 
   .controller('SurveyCtrl', [function () {
-
+    this.name = 'flenn';
   }]);
