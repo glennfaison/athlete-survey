@@ -9,6 +9,6 @@ angular.module('myApp.profiles', ['ngRoute'])
     });
   }])
 
-  .controller('ProfilesCtrl', [function () {
+  .controller('ProfilesCtrl', ['$scope', function ($scope) {
 
   }]);
