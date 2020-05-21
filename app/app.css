@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-control {
+  @apply py-2 px-6 my-2;
+}

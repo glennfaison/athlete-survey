@@ -10,5 +10,5 @@ angular.module('myApp.survey', ['ngRoute'])
   }])
 
   .controller('SurveyCtrl', ['$scope', function ($scope) {
-    $scope.name = 'flenn';
+    $scope.name = '';
   }]);
