@@ -8,6 +8,7 @@
   "dependencies": {
     "angular": "^1.7.5",
     "angular-loader": "^1.7.5",
+    "angular-material": "^1.1.22",
     "angular-route": "^1.7.5",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
@@ -41,20 +42,15 @@
   "scripts": {
     "update-deps": "npm update",
     "postupdate-deps": "npm run copy-libs",
-
     "build:tailwind": "tailwindcss build app/app.css -c tailwind.config.js -o app/tailwind.generated.css",
-    "copy-libs": "cpx \"node_modules/{angular,angular-*,html5-boilerplate/dist}/**/*\" app/lib -C",
-
+    "copy-libs": "cpx \"node_modules/{angular,angular-*,md-*,html5-boilerplate/dist}/**/*\" app/lib -C",
     "prestart": "npm run copy-libs && npm run build:tailwind",
     "start": "nodemon index.js",
-
     "test": "karma start karma.conf.js",
     "test-single-run": "npm test -- --single-run",
-
     "preupdate-webdriver": "npm install",
     "//": "Do not install the Firefox driver to work around https://github.com/angular/webdriver-manager/issues/303.",
     "update-webdriver": "webdriver-manager update --gecko false",
-
     "preprotractor": "npm run update-webdriver",
     "protractor": "protractor e2e-tests/protractor.conf.js"
   }

@@ -1,4 +1,3 @@
-
 const MaritalStatus = Object.create(null);
 
 MaritalStatus.MARRIED = 'MARRIED';

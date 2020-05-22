@@ -1,0 +1,182 @@
+<form class="h-screen w-screen overflow-hidden">
+
+  <!-- Basic Info -->
+  <div class="h-screen flex flex-col justify-center items-stretch p-4" id="basicInfo">
+    <label class="mx-auto text-3xl font-extrabold">Basic Info {{name}}</label>
+
+    <md-input-container>
+      <label for="name" class="font-bold">Name</label>
+      <input type="text" id="name" name="name" required ng-model="profile.name" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="sport" class="font-bold">Sport</label>
+      <md-select ng-model="profile.sports" required multiple md-on-open="loadSports()"
+        md-on-close="clearSportsSearch()">
+        <md-optgroup label="Select Sports">
+          <md-select-header class="w-full">
+            <input ng-model="sportsSearch" type="search" placeholder="Search for a sport.."
+              class="w-full p-2">
+          </md-select-header>
+          <md-option ng-repeat="sport in sports" value="{{sport}}">
+            {{sport}}
+          </md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
+
+    <md-input-container>
+      <label for="nationality" class="font-bold">Nationality</label>
+      <input type="text" id="nationality" name="nationality" ng-model="profile.nationality" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="gender" class="font-bold">Gender</label>
+      <md-select name="gender" id="gender" ng-model="profile.gender" md-on-open="loadGenders()">
+        <md-optgroup label="Select Gender">
+          <md-option ng-repeat="gender in genders" value="{{gender}}">
+            {{gender}}
+          </md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
+
+    <md-input-container>
+      <label for="dob" class="font-bold">Date of Birth</label>
+      <md-datepicker type="date" id="dob" name="dob" ng-model="profile.dob" />
+    </md-input-container>
+
+    <!-- Navigation -->
+    <md-input-container layout="row" class="py-2 justify-center">
+      <md-button href="#about" class="md-primary md-raised">
+        Next
+      </md-button>
+    </md-input-container>
+    <!-- End Navigation -->
+
+  </div>
+  <!-- End Basic Info -->
+
+  <!-- About -->
+  <div class="h-screen flex flex-col justify-center items-stretch p-4" id="about">
+    <label class="mx-auto text-3xl font-extrabold">About</label>
+
+    <md-input-container>
+      <label for="description" class="font-bold">Description</label>
+      <input type="text" id="description" name="description" ng-model="profile.description" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="location" class="font-bold">Location</label>
+      <input type="text" id="location" name="location" ng-model="profile.location" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="team" class="font-bold">Team</label>
+      <input type="text" id="team" name="team" ng-model="profile.team" />
+    </md-input-container>
+
+    <!-- Navigation -->
+    <md-input-container layout="row" class="py-2 justify-center">
+      <md-button href="#basicInfo" class="md-secondary md-raised">
+        Previous
+      </md-button>
+      <md-button href="#socialMedia" class="md-primary md-raised">
+        Next
+      </md-button>
+    </md-input-container>
+    <!-- End Navigation -->
+
+  </div>
+  <!-- End About -->
+
+  <!-- Social Media -->
+  <div class="h-screen flex flex-col justify-center items-stretch p-4" id="socialMedia">
+    <label class="mx-auto text-3xl font-extrabold">Social Media</label>
+
+    <md-input-container>
+      <label for="facebook" class="font-bold">Facebook</label>
+      <input type="url" id="facebook" name="facebook" ng-model="profile.socialMedia.facebook"
+        pattern="(http(s)?://)?(www.)?.+" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="twitter" class="font-bold">Twitter</label>
+      <input type="url" id="twitter" name="twitter" ng-model="profile.socialMedia.twitter"
+        pattern="(http(s)?://)?(www.)?.+" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="snapchat" class="font-bold">Snapchat</label>
+      <input type="url" id="snapchat" name="snapchat" ng-model="profile.socialMedia.snapchat"
+        pattern="(http(s)?://)?(www.)?.+" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="instagram" class="font-bold">Instagram</label>
+      <input type="url" id="instagram" name="instagram" ng-model="profile.socialMedia.instagram"
+        pattern="(http(s)?://)?(www.)?.+" />
+    </md-input-container>
+
+    <!-- Navigation -->
+    <md-input-container layout="row" class="py-2 justify-center">
+      <md-button href="#about" class="md-secondary md-raised">
+        Previous
+      </md-button>
+      <md-button href="#summary" class="md-primary md-raised">
+        Next
+      </md-button>
+    </md-input-container>
+    <!-- End Navigation -->
+
+  </div>
+  <!-- End Social Media -->
+
+  <!-- Summary -->
+  <div class="h-screen flex flex-col justify-center items-stretch p-4" id="summary">
+    <label class="mx-auto text-3xl font-extrabold">Summary</label>
+
+    <div>
+      <label for="name" class="font-bold">Name</label>
+      <input type="text" id="name" name="name" />
+    </div>
+
+    <div>
+      <label for="sport" class="font-bold">Sport</label>
+      <select name="sport" id="sport">
+        <option ng-repeat="sport in sports">{{sport}}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="nationality" class="font-bold">Nationality</label>
+      <input type="text" id="nationality" name="nationality" />
+    </div>
+
+    <div>
+      <label for="gender" class="font-bold">Gender</label>
+      <select name="gender" id="gender">
+        <option ng-repeat="gender in genders">{{gender}}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="dob" class="font-bold">Date of Birth</label>
+      <input type="date" id="dob" name="dob" />
+    </div>
+
+    <!-- Navigation -->
+    <md-input-container layout="row" class="py-2 justify-center">
+      <md-button href="#socialMedia" class="md-secondary md-raised">
+        Previous
+      </md-button>
+      <md-button class="md-primary md-raised">
+        Submit
+      </md-button>
+    </md-input-container>
+    <!-- End Navigation -->
+
+  </div>
+  <!-- End Summary -->
+
+</form>

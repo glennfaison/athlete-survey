@@ -4,7 +4,10 @@ const path = require('path');
 function findFiles ({
   directory = 'app',
   extension = '.js',
-  exclude = (pathname) => !pathname.startsWith(path.join(__dirname, 'app/lib'))
+  exclude = (pathname) => {
+    return !pathname.startsWith(path.join(__dirname, 'app/lib')) &&
+      !pathname.endsWith('.spec.js');
+  }
 }) {
   const pathname = path.join(__dirname, directory);
   const children = fs.readdirSync(pathname, { withFileTypes: true })
@@ -26,13 +29,13 @@ function buildIndex ({
   indexTemplateFile = 'app/index.template.html',
 }) {
   const jsFiles = [
-    'lib/angular/angular.min.js',
-    'lib/angular-route/angular-route.min.js',
-    // 'lib/angular-loader/angular-loader.min.js',
-    ...findFiles({}).map(i => i.substr('app/'.length)),
+    'app/lib/angular-route/angular-route.min.js',
+    'app/lib/angular-loader/angular-loader.min.js',
+    'app/lib/md-steppers/dist/md-steppers.min.js',
+    ...findFiles({})
   ];
   const scriptTags = jsFiles
-    .map(file => `\n  <script src="${file}"></script>`)
+    .map(file => `\n  <script src="${file.substr('app/'.length)}"></script>`)
     .join('');
 
   const indexTemplate = fs.readFileSync(indexTemplateFile, 'utf-8')
