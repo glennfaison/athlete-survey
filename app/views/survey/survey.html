@@ -1,4 +1,4 @@
-<form class="h-screen w-screen overflow-hidden">
+<form class="h-screen w-screen overflow-hidden" ng-submit="submit(profile)">
 
   <!-- Basic Info -->
   <div class="h-screen flex flex-col justify-center items-stretch p-4" id="basicInfo">
@@ -48,7 +48,7 @@
 
     <!-- Navigation -->
     <md-input-container layout="row" class="py-2 justify-center">
-      <md-button href="#about" class="md-primary md-raised">
+      <md-button ng-href="#about" class="md-primary md-raised">
         Next
       </md-button>
     </md-input-container>
@@ -136,33 +136,10 @@
   <div class="h-screen flex flex-col justify-center items-stretch p-4" id="summary">
     <label class="mx-auto text-3xl font-extrabold">Summary</label>
 
-    <div>
-      <label for="name" class="font-bold">Name</label>
-      <input type="text" id="name" name="name" />
-    </div>
-
-    <div>
-      <label for="sport" class="font-bold">Sport</label>
-      <select name="sport" id="sport">
-        <option ng-repeat="sport in sports">{{sport}}</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="nationality" class="font-bold">Nationality</label>
-      <input type="text" id="nationality" name="nationality" />
-    </div>
-
-    <div>
-      <label for="gender" class="font-bold">Gender</label>
-      <select name="gender" id="gender">
-        <option ng-repeat="gender in genders">{{gender}}</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="dob" class="font-bold">Date of Birth</label>
-      <input type="date" id="dob" name="dob" />
+    <div ng-repeat="(key, value) in profile"
+      class="flex flex-row">
+      <label class="font-bold capitalize mr-4">{{key}}</label>
+      <label class="font-light">{{value}}</label>
     </div>
 
     <!-- Navigation -->
@@ -170,7 +147,7 @@
       <md-button href="#socialMedia" class="md-secondary md-raised">
         Previous
       </md-button>
-      <md-button class="md-primary md-raised">
+      <md-button type="submit" class="md-primary md-raised">
         Submit
       </md-button>
     </md-input-container>

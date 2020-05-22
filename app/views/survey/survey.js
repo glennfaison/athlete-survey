@@ -18,11 +18,32 @@ angular.module('myApp.survey', ['ngRoute'])
  * @param {*} SportService
  * @param {*} GenderService
  */
+function SurveyController ($location, $scope, SportService, GenderService, ProfileService) {
+  // #region initialization logic
+  $scope.sports = [];
+  $scope.genders = [];
+  $scope.profile = {
+    name: `Glenn Faison });
+  }]);
+/**
+ * Survey Controller
+ * @param {Object} $scope
+ * @param {string[]} $scope.sports
+ * @param {string[]} $scope.genders
+ * @param {string[]} $scope.socialMedia
+ * @param {Object} $scope.profile
+ * @param {*} SportService
+ * @param {*} GenderService
+ */
 function SurveyController ($scope, SportService, GenderService) {
   // #region initialization logic
   $scope.sports = [];
   $scope.genders = [];
-  $scope.profile = {};
+  $scope.profile = {`,
+    sport: ['Soccer', 'Tennis'],
+    nationality: 'Cameroon',
+    gender: 'MALE'
+  };
   $scope.socialMedia = ['Facebook', 'Twitter', 'Snapchat', 'Quora', 'Instagram'];
   // #endregion initialization logic
 
@@ -30,5 +51,10 @@ function SurveyController ($scope, SportService, GenderService) {
   $scope.loadGenders = async () => ($scope.genders = await GenderService.get());
 
   $scope.clearSportsSearch = async () => ($scope.sportsSearch = '');
+
+  $scope.submit = async (profile) => {
+    await ProfileService.post(profile);
+    $location.path('/profiles');
+  };
 }
-SurveyController.$inject = ['$scope', 'SportService', 'GenderService'];
+SurveyController.$inject = ['$location', '$scope', 'SportService', 'GenderService', 'ProfileService'];
