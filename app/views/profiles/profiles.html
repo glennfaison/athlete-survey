@@ -1,64 +1,54 @@
-<md-toolbar class="toolbar-default" id="feeListPage">
-  <div class="md-toolbar-tools">
-    <md-button class="md-icon-button"
-      aria-label="{{FEE_LIST.ACTIONS.GO_BACK}}"
-      onclick="history.back()" type="button"
-      title="{{FEE_LIST.ACTIONS.GO_BACK}}">
-      <md-icon md-font-icon="fa fa-arrow-left"></md-icon>
-    </md-button>
-    <h2>
-      <span translate>FEE_LIST.HEADER.TITLE</span>
-    </h2>
-    <span flex></span>
-    <md-button class="md-raised md-primary md-hue-1"
-      aria-label="{{FEE_LIST.ACTIONS.ADD}}"
-      ng-click="showFeeAddDialog($event)">
-      <md-icon md-font-icon="fa fa-plus"></md-icon>&nbsp;
-      <span translate>FEE_LIST.ACTIONS.ADD</span>
-    </md-button>
-  </div>
-</md-toolbar>
+<div class="h-screen" layout="column">
 
-<md-content class="padded-content-page md-page-content-block">
-  <div layout-align="center center">
-    <md-card>
+  <md-toolbar class="toolbar-default" id="feeListPage">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button"
+        aria-label="Back"
+        onclick="history.back()" type="button"
+        title="Back">
+        <md-icon md-font-icon="fa fa-arrow-left"></md-icon>
+      </md-button>
+      <h2>
+        <span translate>Profiles</span>
+      </h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  
+  <md-content flex>
+    <md-card flex>
       <md-card-content>
-        <form ng-submit="" class="receive-search-form display-block">
-          <div layout="row">
-            <md-input-container flex="10">
-              <label>#</label>
-              <input ng-model="searchForm.id" type="number" min="1" />
-            </md-input-container>
+        <form ng-submit="">
 
-            <md-input-container flex="30">
-              <label>{{'FEE_LIST.LABELS.DESCRIPTION'}}</label>
-              <input ng-model="searchForm.description" type="text" />
-            </md-input-container>
+          <md-input-container flex="30" class="mb-0">
+            <label>Name</label>
+            <input ng-model="searchForm.description" type="text" />
+          </md-input-container>
 
-            <md-button class="md-raised md-primary md-hue-1" style="margin: 23px 8px 0 8px;">
-              <label translate>FEE_LIST.ACTIONS.SEARCH</label>
-            </md-button>
-          </div>
+          <md-button class="md-raised md-primary md-hue-1">
+            <label translate>Search</label>
+          </md-button>
+
         </form>
 
-        <md-divider style="margin-top: 20px; margin-bottom: 20px"></md-divider>
+        <md-divider class="my-3"></md-divider>
 
         <md-data-table-container>
-          <table md-data-table class="md-primary md-data-table">
+          <table md-data-table class="md-primary md-data-table" flex layout="column">
             <thead md-order="query.order">
-              <tr>
-                <th name="#"></th>
-                <th name="{{'FEE_LIST.LABELS.TYPE'}}"></th>
-                <th name="{{'FEE_LIST.LABELS.SORT'}}"></th>
-                <th name="{{'FEE_LIST.LABELS.DESCRIPTION'}}"></th>
-                <th name="{{'FEE_LIST.LABELS.FEE'}}"></th>
-                <th name="{{'FEE_LIST.LABELS.ACTION'}}"></th>
+              <tr flex class="justify-between">
+                <th name="#" >#</th>
+                <th name="Name">Name</th>
+                <th name="Name">Name</th>
+                <th name="Name">Name</th>
+                <th name="Name">Name</th>
+                <th name="Name">Name</th>
               </tr>
             </thead>
             <tbody>
-              <tr md-auto-select ng-repeat="fee in observableFeeList">
-                <td>{{$index + ' hey'}}</td>
-                <td>{{$index + ' hey'}}</td>
+              <tr md-auto-select ng-repeat="profile in profiles" flex class="justify-between">
+                <td>{{$index + 1}}</td>
+                <td>{{profile.name}}</td>
                 <td>{{$index + ' hey'}}</td>
                 <td>{{$index + ' hey'}}</td>
                 <td>{{$index + ' hey'}}</td>
@@ -67,10 +57,6 @@
                     <md-icon md-font-icon="fa fa-edit md-primary"></md-icon>
                   </a>
                   &nbsp;
-                  <!-- <a href="javascript:void(0)" ng-click="openFeeSettlementDialog($event, fee.id)">
-                    <md-icon md-font-icon="fa fa-cog md-primary"></md-icon>
-                  </a> -->
-                  <!-- &nbsp; -->
                   <a href="javascript:void(0)" ng-click="">
                     <md-icon md-font-icon="fa fa-trash-o md-warn"></md-icon>
                   </a>
@@ -87,5 +73,6 @@
       </md-card-content>
 
     </md-card>
-  </div>
-</md-content>
+  </md-content>
+
+</div>

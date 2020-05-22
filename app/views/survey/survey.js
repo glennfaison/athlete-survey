@@ -8,6 +8,7 @@ angular.module('myApp.survey', ['ngRoute'])
       controller: 'SurveyCtrl',
     });
   }]);
+
 /**
  * Survey Controller
  * @param {Object} $scope
